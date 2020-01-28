@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DealDouble.Entities.Entities
 {
-    class Production
+   public class Production
     {
         public int Id { get; set; }
         public string Title { get; set; }

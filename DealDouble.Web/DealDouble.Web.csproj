@@ -14,4 +14,14 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Reference Include="DealDouble.Data">
+      <HintPath>..\DealDouble.Data\bin\Debug\netcoreapp3.1\DealDouble.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="DealDouble.Entities">
+      <HintPath>..\DealDouble.Entities\bin\Debug\netcoreapp3.1\DealDouble.Entities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
