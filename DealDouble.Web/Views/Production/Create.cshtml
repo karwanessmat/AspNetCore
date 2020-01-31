@@ -1,0 +1,68 @@
+﻿@model Production
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ProductionViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-9">
+        <form asp-action="Create" id="createForm" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActualAmount" class="control-label"></label>
+                <input asp-for="ActualAmount" class="form-control" />
+                <span asp-validation-for="ActualAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartingDate" class="control-label"></label>
+                <input type="date" asp-for="StartingDate" class="form-control" />
+                <span asp-validation-for="StartingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndingDate" class="control-label"></label>
+                <input type="date" asp-for="EndingDate" class="form-control" />
+                <span asp-validation-for="EndingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<input type="submit" value="Create" id="btnSave" class="btn btn-primary" />*@
+                <button type="button" id="btnSave" data-dismiss="modal" class="btn btn-sm btn-success">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script type="text/javascript">
+    $("#btnSave").click(function () {
+        $.ajax({
+            url: "Production/Create",
+            method: "post",
+            data: $("#createForm").serialize()
+        }).done(function (response) {
+            $("#listingArea").html(response);
+        });
+    });
+</script>

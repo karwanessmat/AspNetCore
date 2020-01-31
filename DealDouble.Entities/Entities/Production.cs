@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace DealDouble.Entities.Entities
@@ -11,7 +12,11 @@ namespace DealDouble.Entities.Entities
         public string ImageUrl { get; set; }
         public string Description { get; set; }
         public decimal ActualAmount { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime StartingDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime EndingDate { get; set; }
     }
 }

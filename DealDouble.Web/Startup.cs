@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DealDouble.Data.DAL;
+using DealDouble.Services.IRepository;
+using DealDouble.Services.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -33,6 +35,9 @@ namespace DealDouble.Web
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<DealDoubleContext>();
+
+
+            services.AddTransient<IProductionRepository, ProductionRepository>();
             services.AddMvc();
             services.AddControllersWithViews();
             services.AddRazorPages();

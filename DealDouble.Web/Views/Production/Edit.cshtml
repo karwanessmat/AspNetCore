@@ -1,0 +1,66 @@
+﻿@model EditProductionViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="row">
+    <div class="col-md-9">
+        <form method="post" asp-action="Edit" id="editForm">
+            <input type="hidden" asp-for="@Model.Production.Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label asp-for="@Model.Production.Title" class="control-label"></label>
+                <input asp-for="@Model.Production.Title" class="form-control" />
+                <span asp-validation-for="@Model.Production.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Production.ImageUrl" class="control-label"></label>
+                <input asp-for="@Model.Production.ImageUrl" class="form-control" />
+                <span asp-validation-for="@Model.Production.ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Production.Description" class="control-label"></label>
+                <input asp-for="@Model.Production.Description" class="form-control" />
+                <span asp-validation-for="@Model.Production.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Production.ActualAmount" class="control-label"></label>
+                <input asp-for="@Model.Production.ActualAmount" class="form-control" />
+                <span asp-validation-for="@Model.Production.ActualAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Production.StartingDate" class="control-label"></label>
+                <input type="date" asp-for="@Model.Production.StartingDate" class="form-control" />
+                <span asp-validation-for="@Model.Production.StartingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Production.EndingDate" class="control-label"></label>
+                <input type="date" asp-for="@Model.Production.EndingDate" class="form-control" />
+                <span asp-validation-for="@Model.Production.EndingDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group modal-footer">
+                @*<input type="submit" value="Create" class="btn btn-primary" />*@
+                    <button id="btnEdit" type="button" data-dismiss="modal">Updated</button>
+                </div>
+</form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $("#btnEdit").click(function () {
+        $.ajax({
+            url: "Production/Edit",
+            method: "post",
+            data: $("#editForm").serialize()
+        }).done(function (response) {
+            debugger;
+            $("#listingArea").html(response);
+        });
+    });
+</script>
